@@ -16,9 +16,15 @@ print(client.isConnected()) # check connection
 print(client.eth.blockNumber)
 
 #build transaction
+transaction = {
+    'nonce':Web3.eth.getTransactionCount(account_1), #helps prevent sending same transactions twice by sender
+    'receiver':account_2,
+    'amount':Web3.toWei(1,'ether'), # sending 1 ether as Wei amount
+    'gas': 10000, # gas limit. Max units of gas we are willing to pay for the transaction to be mined
+    'gas_price': Web3.toWei('50','gwei')
+}
 
-
-#sign transaction
-
+#sign transaction with private key of sender
+signed_transaction = Web3.eth.account.sign_transaction(transaction,private_key_1)
 
 #send transaction
