@@ -30,3 +30,5 @@ signed_transaction = Web3.eth.account.signTransaction(transaction,private_key_1)
 #send transaction
 transaction_hash = Web3.eth.sendRawTransaction(signed_transaction.rawTransaction)
 print(transaction_hash)
+# make human readable hash
+print(Web3.toHex(transaction_hash))
