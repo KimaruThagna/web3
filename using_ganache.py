@@ -25,6 +25,8 @@ transaction = {
 }
 
 #sign transaction with private key of sender
-signed_transaction = Web3.eth.account.sign_transaction(transaction,private_key_1)
+signed_transaction = Web3.eth.account.signTransaction(transaction,private_key_1)
 
 #send transaction
+transaction_hash = Web3.eth.sendRawTransaction(signed_transaction.rawTransaction)
+print(transaction_hash)
