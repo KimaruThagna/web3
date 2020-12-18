@@ -14,3 +14,11 @@ client = Web3(Web3.HTTPProvider(ganache_url)) # connect to the ethereum blockcha
 print(client.isConnected()) # check connection
 # latest block
 print(client.eth.blockNumber)
+
+#build transaction
+
+
+#sign transaction
+
+
+#send transaction
