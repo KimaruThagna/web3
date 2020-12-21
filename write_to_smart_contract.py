@@ -7,6 +7,8 @@ client = Web3(Web3.HTTPProvider(ganache_url)) # connect to the ethereum blockcha
 print(client.isConnected()) # check connection
 # latest block
 print(client.eth.blockNumber)
+# designate first account to be default account
+Web3.eth.defaultAccount = Web3.eth.accounts[0]
 
 # instantiate contract
 abi = json.loads(os.environ.get('abi'))
