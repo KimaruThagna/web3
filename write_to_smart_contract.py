@@ -13,7 +13,6 @@ Web3.eth.defaultAccount = Web3.eth.accounts[0]
 # instantiate contract
 abi = json.loads(os.environ.get('abi'))
 address = Web3.toChecksumAddress(os.environ.get('address'))
-contract_byte_code = os.environ.get('byte_code')
 
 smart_contract = client.eth.contract(address=address,abi=abi)
 print(smart_contract.functions.greet().call())
