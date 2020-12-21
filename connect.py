@@ -1,5 +1,6 @@
 from web3 import Web3
-infura_url = 'https://mainnet.infura.io/v3/ee3fe0d462ca4294b10ffbf535619190'
+import os
+infura_url = os.environ.get('infura_url')
 client = Web3(Web3.HTTPProvider(infura_url)) # connect to the ethereum blockchain
 print(client.isConnected()) # check connection
 # latest block
@@ -9,3 +10,6 @@ print(latest)
 print(client.eth.getBlock(latest))
 # details of the genesis block
 print(client.eth.getBlock(0))
+block_hash = os.environ.get('block_hash')
+transaction = client.eth.getTransactionByBlock(block_hash,1) # transaction at index 1
+print(transaction)
