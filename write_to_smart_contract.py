@@ -14,3 +14,5 @@ address = Web3.toChecksumAddress(os.environ.get('address'))
 
 smart_contract = client.eth.contract(address=address,abi=abi)
 print(smart_contract.functions.greet().call())
+# send data to contract
+tx_hash = smart_contract.functions.setGreeting('Hello world from Solidity and Ganache').transact()
