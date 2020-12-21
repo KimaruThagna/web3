@@ -9,3 +9,4 @@ print(account)
 # the private key is very sensitive and should be stored in encrypted format
 passphrase = 'my passphrase'
 keystore = account.encrypt(passphrase)
+print(keystore)

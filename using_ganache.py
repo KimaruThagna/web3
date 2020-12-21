@@ -17,18 +17,18 @@ print(client.eth.blockNumber)
 
 #build transaction
 transaction = {
-    'nonce':Web3.eth.getTransactionCount(account_1), #helps prevent sending same transactions twice by sender
-    'receiver':account_2,
-    'amount':Web3.toWei(1,'ether'), # sending 1 ether as Wei amount
-    'gas': 10000, # gas limit. Max units of gas we are willing to pay for the transaction to be mined
-    'gas_price': Web3.toWei('50','gwei')
+    'nonce':client.eth.getTransactionCount(account_1), #helps prevent sending same transactions twice by sender
+    'to':account_2,
+    'value':Web3.toWei(1,'ether'), # sending 1 ether as Wei amount
+    'gas': 100000, # gas limit. Max units of gas we are willing to pay for the transaction to be mined
+    'gasPrice': Web3.toWei('50','gwei')
 }
 
 #sign transaction with private key of sender
-signed_transaction = Web3.eth.account.signTransaction(transaction,private_key_1)
+signed_transaction = client.eth.account.signTransaction(transaction,private_key_1)
 
 #send transaction
-transaction_hash = Web3.eth.sendRawTransaction(signed_transaction.rawTransaction)
+transaction_hash = client.eth.sendRawTransaction(signed_transaction.rawTransaction)
 print(transaction_hash)
 # make human readable hash
 print(Web3.toHex(transaction_hash))

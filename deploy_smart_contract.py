@@ -8,7 +8,7 @@ print(client.isConnected()) # check connection
 # latest block
 print(client.eth.blockNumber)
 # designate first account to be default account
-Web3.eth.defaultAccount = Web3.eth.accounts[0]
+client.eth.defaultAccount = client.eth.accounts[0]
 
 
 abi = json.loads(os.environ.get('abi'))
@@ -18,7 +18,7 @@ contract_byte_code = os.environ.get('byte_code')
 Greeter = client.eth.contract(bytecode=contract_byte_code,abi=abi)
 # execute constructor
 hash = Greeter.constructor().transact()
-receipt = Web3.eth.waitForTransactionReceipt(hash)
+receipt = client.eth.waitForTransactionReceipt(hash)
 print(f'Transaction receipt for mining deployment of smart contract {receipt}')
 # get contract and call functions
 contract = client.eth.contract(address=receipt.contractAddress, abi=abi)
