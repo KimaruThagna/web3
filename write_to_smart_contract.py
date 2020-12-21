@@ -18,3 +18,6 @@ smart_contract = client.eth.contract(address=address,abi=abi)
 print(smart_contract.functions.greet().call())
 # send data to contract
 tx_hash = smart_contract.functions.setGreeting('Hello world from Solidity and Ganache').transact()
+# wait for transaction to be minedd and get receipt
+Web3.eth.waitForTransactionReceipt(tx_hash)
+print(f'New updated greeting {smart_contract.functions.greet().call()}')
